@@ -1,0 +1,58 @@
+
+
+
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+
+int main() {
+    int zar1, zar2, top, kendiSayisi;
+    char secim;
+
+    srand(time(NULL));
+
+    zar1 = rand() % 6 + 1;
+    zar2 = rand() % 6 + 1;
+    top = zar1 + zar2;
+
+    printf("Ilk zaraniz: %d \t Ikinci zaraniz: %d\n\n\n", zar1, zar2);
+
+    if (top == 7 || top == 11) {
+        printf("KAZANDINIZ!\n");
+    }
+    else if (top == 2 || top == 3 || top == 12) {
+        printf("KAYBETTINIZ :(\n");
+    }
+    else {
+        kendiSayisi = top;
+        printf("Toplaminiz: %d. Kendi sayiniz haline geldi, tekrar zar atip kendi sayinizi bulmalisiniz! \n\n\nEger 7 atarsaniz kaybedersiniz.\n\n\n", kendiSayisi);
+
+        while (1) {
+            printf("Tekrar zar atmak icin '.' tusuna basip Enter'a basin: \n\n");
+            scanf(" %c", &secim);
+
+            if (secim == '.') {
+                zar1 = rand() % 6 + 1;
+                zar2 = rand() % 6 + 1;
+                top = zar1 + zar2;
+
+                printf("Yeni zar atisi\tzar1:%d \t zar2:%d (Toplam: %d)\n\n\n", zar1, zar2, top);
+
+                if (top == kendiSayisi) {
+                    printf("Tebrikler! Kendi sayiniza ulasirsiniz: %d\n\n\n", top);
+                    break;
+                }
+                else if (top == 7) {
+                    printf("7 attiniz! KAYBETTINIZ :(\n\n\n");
+                    break;
+                }
+            } else {
+                printf("Yanlis tuslama! Tekrar zar atmak icin '.' tusuna basiniz.\n\n\n");
+            }
+        }
+    }
+
+    return 0;
